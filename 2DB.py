@@ -40,8 +40,8 @@ def find_twcom(per_file):
             if item[0] == u'代表人姓名':
                 name = item[1]
             if item[0] == u'公司所在地':
-                continue
                 address = item[1]
+                continue
             if item[0] == u'登記機關':
                 continue
                 print item[1]
@@ -77,7 +77,7 @@ def find_twcom(per_file):
         if paid_in_capital < 500000000:
             continue
 #print u'到職日期',ppl_list[u'到職日期'],
-        foo = u'%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (UN, firm_status, firm_name, paid_in_capital, update_year, update_month, update_day, setup_year, setup_month, setup_day)
+        foo = u'%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' % (UN, firm_status, firm_name, paid_in_capital, update_year, update_month, update_day, setup_year, setup_month, setup_day, address)
         csv.write(foo.encode('utf8'))
     fp.close()
 
@@ -94,7 +94,7 @@ files = [\
         ]
 
 csv = open("x0000000.csv", "w")
-csv.write('統一編號,公司狀況,公司名稱,實收資本額(元),最後核准變更日期年,月,日,核准設立日期年,月,日' + os.linesep)
+csv.write('統一編號,公司狀況,公司名稱,實收資本額(元),最後核准變更日期年,月,日,核准設立日期年,月,日,Address' + os.linesep)
 
 for per_file in files:
     find_twcom(per_file)
